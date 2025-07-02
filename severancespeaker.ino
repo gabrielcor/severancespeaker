@@ -16,10 +16,12 @@
 
 // ==> Example which shows how to use the built in ESP32 I2S < 3.0.0
 
-#include "I2S.h"
+// #include "I2S.h"
+#include "AudioTools.h"
 #include "BluetoothA2DPSink.h"
 
-BluetoothA2DPSink a2dp_sink(I2S);
+I2SStream myi2s;
+BluetoothA2DPSink a2dp_sink(myi2s);
 
 void setup() {
     Serial.begin(9600);
@@ -30,6 +32,7 @@ void setup() {
     I2S.setFsPin(15); //  yellow - old 7 rx
     I2S.setDataPin(22); // green - old 14 
 */
+/*
     I2S.setSckPin(8); //  blue - old 8 tx
     I2S.setFsPin(7); //  yellow - old 7 rx
     I2S.setDataPin(22); // green - old 14 
@@ -38,7 +41,7 @@ void setup() {
       Serial.println("Failed to initialize I2S!");
       while (1); // do nothing
     }
-
+*/
    a2dp_sink.start("MyMusic");
    Serial.println("Started");
 }
